@@ -35,9 +35,9 @@ function App() {
 
 
   //creo una nuova funzione per cancellare un articolo dalla lista
-  const removeArticle = i => {
-    const updatedArticleList = articles.filter((article, index) => {
-      return index !== i
+  const removeArticle = id => {
+    const updatedArticleList = articles.filter(article => {
+      return article.id !== id
     })
     //carico la nuova lista aggiornata con l'elemento/i mancante/i
     setArticles(updatedArticleList);
@@ -48,9 +48,9 @@ function App() {
       <h1>Ecco il tuo carrello<i className="fa-solid fa-cart-shopping mx-3"></i></h1>
 
       <ul className="nav flex-column gap-3 my-5 col-4">
-        {articles.map((article, i) =>
+        {articles.map((article) =>
           //aggiungo l'evento onClick dove aggiungerò la funzione per rimuovere elementi
-          (<li className="d-flex justify-content-between fs-4" key={i}>{article.title}<button className="btn btn-danger" onClick={() => removeArticle(i)}><i className="fa-solid fa-trash-can"></i></button></li>))}
+          (<li className="d-flex justify-content-between fs-4" key={article.id}>{article.title}<button className="btn btn-danger" onClick={() => removeArticle(article.id)}><i className="fa-solid fa-trash-can"></i></button></li>))}
       </ul>
 
       <form onSubmit={addArticle}>
