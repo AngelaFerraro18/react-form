@@ -34,12 +34,23 @@ function App() {
   }
 
 
+  //creo una nuova funzione per cancellare un articolo dalla lista
+  const removeArticle = i => {
+    const updatedArticleList = articles.filter((article, index) => {
+      return index !== i
+    })
+    //carico la nuova lista aggiornata con l'elemento/i mancante/i
+    setArticles(updatedArticleList);
+  }
+
   return (
     <>
       <h1>Ecco il tuo carrello</h1>
 
       <ul>
-        {articles.map(article => <li key={article.id}>{article.title}</li>)}
+        {articles.map((article, i) =>
+          //aggiungo l'evento onClick dove aggiungerò la funzione per rimuovere elementi
+          (<li key={i}>{article.title}<button onClick={() => removeArticle(i)}>Cancella</button></li>))}
       </ul>
 
       <form onSubmit={addArticle}>
