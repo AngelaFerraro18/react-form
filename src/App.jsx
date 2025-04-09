@@ -45,20 +45,20 @@ function App() {
 
   return (
     <>
-      <h1>Ecco il tuo carrello</h1>
+      <h1>Ecco il tuo carrello<i className="fa-solid fa-cart-shopping mx-3"></i></h1>
 
-      <ul>
+      <ul className="nav flex-column gap-3 my-5 col-4">
         {articles.map((article, i) =>
           //aggiungo l'evento onClick dove aggiungerò la funzione per rimuovere elementi
-          (<li key={i}>{article.title}<button onClick={() => removeArticle(i)}><i class="fa-solid fa-trash-can"></i></button></li>))}
+          (<li className="d-flex justify-content-between fs-4" key={i}>{article.title}<button className="btn btn-danger" onClick={() => removeArticle(i)}><i className="fa-solid fa-trash-can"></i></button></li>))}
       </ul>
 
       <form onSubmit={addArticle}>
-        <input
+        <input className="border border-success mx-2 p-1"
           type="text"
           value={newArticle}
           onChange={event => { setNewArticle(event.target.value) }} />
-        <button>Aggiungi nuovo articolo</button>
+        <button className="btn btn-success">Aggiungi nuovo articolo</button>
       </form >
     </>
   )
