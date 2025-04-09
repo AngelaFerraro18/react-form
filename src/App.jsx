@@ -50,7 +50,7 @@ function App() {
       <ul>
         {articles.map((article, i) =>
           //aggiungo l'evento onClick dove aggiungerò la funzione per rimuovere elementi
-          (<li key={i}>{article.title}<button onClick={() => removeArticle(i)}>Cancella</button></li>))}
+          (<li key={i}>{article.title}<button onClick={() => removeArticle(i)}><i class="fa-solid fa-trash-can"></i></button></li>))}
       </ul>
 
       <form onSubmit={addArticle}>
